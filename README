@@ -94,6 +94,8 @@ Connecting to lightsocket...
 10000 2.73796105385 0.000273796105385 3652.35290179
 Requests Per Second:  3652.13155741
 
+To get better performance, you could run multiple clients or use a C or C++ client.
+
 Where can I get help?
 
 The Gremlin User group (https://groups.google.com/forum/#!forum/gremlin-users)
