@@ -20,9 +20,9 @@ It works for what it was designed for, but it's not meant to be used as a
 production server (at least not yet). I will continue to develop it and 
 use it to experiment with ZeroMQ and binary serialization and RPC protocols. 
 
-It's written in Jython so it's easy to extend, and it was doing ~10,000 requests
-per second on my dev system. Jython was the bottlenecks. By using a rewriting 
-the server in Java or Scala we could improve upon that.
+It's written in Jython so it's easy to extend, but Jython isn't as fast as
+the normal C Python, and it isn't the most performant of the JVM languages. 
+We could make it faster by rewriting it in Java or Scala.
 
 What do I need?
 
