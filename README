@@ -1,0 +1,68 @@
+                              Lightsocket   
+
+A lightweight ZeroMQ socket server for the JVM (written in Jython for now)
+
+
+What is Lightsocket?
+
+Lightsocket is a lightweight ZeroMQ socket server for the JVM. I originally 
+wrote it to provide a way for Bulbs to plug into the JVM becasue I needed
+to load WordNet from NTLK (which is in Python) into the Ne4j Batch Loader
+(which is in Java). But, it's generic enough that you can use can add 
+resource modules to extened it to do whatever you want.
+
+An Example resource is provided in lightsocket/resources dir, as well as a 
+Blueprints resource.
+ 
+Is it ready?
+
+It works for what it was designed for, but it's not meant to be used as a 
+production server (at least not yet). I will continue to develop it and 
+use it to experiment with ZeroMQ and binary protocols. 
+
+It's written in Jython so it's easy to extend, and it was doing ~8,400 inserts 
+per second on a single external USB hard drive on my dev system. Jython and
+JSON were the bottlenecks. By using a binary serialization library and 
+rewriting the server in Java or Scala we could improve upon that.
+
+What do I need?
+
+If you're just using the base server, you need several to install these 
+packages (I plan on automating this real soon now):
+
+* ZeroMQ (http://www.zeromq.org/intro:get-the-software)
+
+* jzmq, the Java ZeroMQ binding (install using maven):
+
+  $ git clone https://github.com/zeromq/jzmq.git
+  $ cd jzmq
+  $ mvn clean install
+
+* Jackson JSON (http://jackson.codehaus.org/)
+
+* Google Gson (http://code.google.com/p/google-gson/)
+
+If you are going to use for Neo4j/Blueprints or to load WordNet, you also need:
+
+* Bulbs (http://bulbflow.com)
+
+* Blueprints (https://github.com/tinkerpop/blueprints)
+
+* Rexster (https://github.com/tinkerpop/rexster/wiki)
+
+Where are the docs?
+
+These are the docs at the moment, and resoruces/example.py is an annotated for you.
+
+You will need to edit startup.py and init.py, which are located in the root dir.
+
+Soon I will put up real docs and more examples at http://lightsocket.bulbflow.com .
+
+Where can I get help?
+
+The Gremlin User group (https://groups.google.com/forum/#!forum/gremlin-users)
+of email me at james@jamesthornton.com.
+
+Please feel free to fork it and send me pulls if you hack on it, and it needs a maven
+install script so it would be cool if someone set that up.
+
