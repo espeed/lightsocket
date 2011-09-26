@@ -8,8 +8,8 @@ What is Lightsocket?
 Lightsocket is a lightweight ZeroMQ socket server for the JVM. I originally 
 wrote it to provide a way for Bulbs to plug into the JVM because I needed
 to load WordNet from NTLK (which is in Python) into the Neo4j Batch Loader
-(which is in Java). But it's generic enough that you can add othr 
-resource modules to extened it to do whatever you want.
+(which is in Java). But it's generic enough that you can add other 
+resource modules to extend it to do whatever you want.
 
 An Example resource is provided in lightsocket/resources dir, as well as a 
 Blueprints Neo4j resource.
@@ -18,11 +18,11 @@ Is it ready?
 
 It works for what it was designed for, but it's not meant to be used as a 
 production server (at least not yet). I will continue to develop it and 
-use it to experiment with ZeroMQ and binary serialization and RPC protocols. 
+use it to experiment with ZeroMQ and binary serialization/RPC protocols. 
 
 It's written in Jython so it's easy to extend, but Jython isn't as fast as
-the normal C Python, and it isn't the most performant of the JVM languages. 
-We could make it faster by rewriting it in Java or Scala.
+the normal C Python and it isn't the most performant of the JVM languages. 
+We could obviously make it faster by rewriting it in Java or Scala.
 
 What do I need?
 
@@ -41,7 +41,7 @@ on automating this real soon now):
 
 * Google Gson (http://code.google.com/p/google-gson/)
 
-If you are going to use for Neo4j/Blueprints or to load WordNet, you also need:
+If you want to load WordNet into through Blueprints into Neo4j, you will also need:
 
 * Bulbs (http://bulbflow.com)
 
@@ -51,11 +51,43 @@ If you are going to use for Neo4j/Blueprints or to load WordNet, you also need:
 
 Where are the docs?
 
-These are the docs at the moment, and resoruces/example.py is an annotated for you.
+These are the docs at the moment, and resources/example.py is an annotated for you.
 
-You will need to edit startup.py and init.py, which are located in the root dir.
+You will need to edit startup.sh and init.py, which are located in the root dir.
 
 Soon I will put up real docs and more examples at http://lightsocket.bulbflow.com .
+
+How do I test it out?
+
+After you install the libs above, open two terminals and cd to Lightsocket's root 
+dir -- on terminal for the client, one for the server.
+
+Install the ZeroMQ Python client (see the comments in client_example.py for details):
+
+$ easy_instal pyzmq
+
+Start the Lightsocket server:
+
+$ ./startup.sh
+
+Run the client test:
+
+$ python client_example.py
+
+You should now see something like this:
+
+Connecting to lightsocket...
+1000 0.266904830933 0.000266904830933 3746.65380355
+2000 0.543519020081 0.00027175951004 3679.72403193
+3000 0.819408893585 0.000273136297862 3661.17578597
+4000 1.0937628746 0.000273440718651 3657.09980918
+5000 1.37030100822 0.000274060201645 3648.83333661
+6000 1.64268684387 0.000273781140645 3652.55253756
+7000 1.91710591316 0.000273872273309 3651.3371285
+8000 2.19388985634 0.000274236232042 3646.49117497
+9000 2.46431183815 0.000273812426461 3652.1351968
+10000 2.73796105385 0.000273796105385 3652.35290179
+Requests Per Second:  3652.13155741
 
 Where can I get help?
 
