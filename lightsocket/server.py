@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+#
+# Copyright 2011 James Thornton (http://jamesthornton.com)
+# BSD License (see LICENSE for details)
+#
+
 from org.zeromq import ZMQ
 from java.util import HashMap
 from org.codehaus.jackson.map import ObjectMapper

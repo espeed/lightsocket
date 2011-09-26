@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# Copyright 2011 James Thornton (http://jamesthornton.com)
+# BSD License (see LICENSE for details)
+#
 
 # Modify this to point to your Rexster root dir and lib dir
 REXSTER_DIR=/home/james/projects/whybase/rexster

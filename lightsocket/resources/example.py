@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+#
+# Copyright 2011 James Thornton (http://jamesthornton.com)
+# BSD License (see LICENSE for details)
+#
+
 import random
 from lightsocket.server import Resource, Response, Router
 

@@ -1,8 +1,12 @@
+# -*- coding: utf-8 -*-
 #
-# This is an example Python client (not Jython) for Lightsocket
+# Copyright 2011 James Thornton (http://jamesthornton.com)
+# BSD License (see LICENSE for details)
+#
+# This is an example Python client (not Jython) for Lightsocket.
 #
 # You need to install the ZeroMQ Python binding before you run it.
-# Get it here https://github.com/zeromq/pyzmq or install via: 
+# Get pyzmq here https://github.com/zeromq/pyzmq or install via: 
 # $ easy_install pyzmq
 #
 # Then startup the lightsocket server, and then run this client via:

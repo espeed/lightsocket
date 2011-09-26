@@ -1,10 +1,16 @@
+# -*- coding: utf-8 -*-
+#
+# Copyright 2011 James Thornton (http://jamesthornton.com)
+# BSD License (see LICENSE for details)
+#
+
 from java.lang import Long
 
-#from com.tinkerpop.pipes.util import FluentPipeline
 from com.tinkerpop.rexster import AbstractSubResource
 from com.tinkerpop.rexster import RexsterApplicationProvider
 from com.tinkerpop.blueprints.pgm.impls.neo4j import Neo4jGraph
 from com.tinkerpop.blueprints.pgm.impls.neo4jbatch import Neo4jBatchGraph
+#from com.tinkerpop.pipes.util import FluentPipeline
 
 from lightsocket.server import Resource, Response, Router
 
@@ -27,7 +33,6 @@ class VertexProxy(Resource):
     def create(self,request):
         vertex = self.graph.addVertex(None)
         for key, value in request.data.items():
-            #print key, value
             value = batch_resource.getTypedPropertyValue(str(value))
             vertex.setProperty(key,value)
         data = dict(_id=vertex.id,_type=self._type)
