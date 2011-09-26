@@ -17,7 +17,7 @@ import zmq
 import json
 import time
 
-class ExampleClient(object):
+class ClientExample(object):
 
     def __init__(self,server="tcp://localhost:5555"):
         self.server = server
@@ -55,7 +55,7 @@ class ExampleClient(object):
                 elapsed = time.time() - self.start_time
                 print self.count, elapsed, elapsed / self.count, self.count / elapsed
 
-    def run_test(self,requests=10000):
+    def run_test(self,requests=30000):
         path = "example/test"
         self.start_timer()
         for x in range(0,requests):
@@ -63,6 +63,6 @@ class ExampleClient(object):
             self.display_progress()
         self.stop_timer()
 
-client = ExampleClient()
+client = ClientExample()
 client.run_test()
 

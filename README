@@ -70,11 +70,16 @@ Start the Lightsocket server:
 
 $ ./startup.sh
 
-Run the client test:
+You should see something like this:
+
+Starting Lightsocket...
+Ready to receive requests...
+
+Now run the client test:
 
 $ python client_example.py
 
-You should now see something like this:
+You should see something like this:
 
 Connecting to lightsocket...
 1000 0.266904830933 0.000266904830933 3746.65380355

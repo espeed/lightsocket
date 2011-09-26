@@ -161,6 +161,7 @@ class Server(Resource):
         return self.router.get(name)
         
     def start(self):
+        print "Starting Lightsocket..."
         context = ZMQ.context(1)
         self.socket = context.socket(ZMQ.REP)
         self.socket.bind(self.address)
@@ -168,31 +169,23 @@ class Server(Resource):
         self.receive_requests()
 
     def receive_requests(self):
+        print "Ready to receive requests..."
         while self.up:
             raw = self.socket.recv(0)
             # max req/sec with one python client: 10174 req/sec
             # python client json serialization drops 10174 to 8153
             # jython server json read drops it from 8153 to 6302
             request = Request(self.mapper.readValue(raw,HashMap))
-
-            # evidently pickle with zlib is not faster than json
-            #decomp = zlib.decompress(raw)
-            #data = cPickle.loads(decomp)
-            #request = Request(data)
-
             # router drops is from 6302 to 4600 (this is the only thing to optimize)
             resp = self.router.get(request)
             # re-serialization drops it from 4600 to 4282 (you don't have to serialize)
             self.send_response(resp)
             #self.socket.send(str(dict()), 0)        
 
-        #resource, request = self.router.get(request)
-        #if resource:
-        #    # if resource is None, the router should have already sent a 404
-        #    resp = resource.handle_request(request)        
-        #    self.send_response(resp)
-
-
+            # evidently pickle with zlib is not faster than json
+            #decomp = zlib.decompress(raw)
+            #data = cPickle.loads(decomp)
+            #request = Request(data)
 
     def send_response(self,resp):
         self.socket.send(resp.to_json(self.return_data), 0)
