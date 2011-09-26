@@ -6,29 +6,28 @@ A lightweight ZeroMQ socket server for the JVM (written in Jython for now)
 What is Lightsocket?
 
 Lightsocket is a lightweight ZeroMQ socket server for the JVM. I originally 
-wrote it to provide a way for Bulbs to plug into the JVM becasue I needed
-to load WordNet from NTLK (which is in Python) into the Ne4j Batch Loader
-(which is in Java). But, it's generic enough that you can use can add 
+wrote it to provide a way for Bulbs to plug into the JVM because I needed
+to load WordNet from NTLK (which is in Python) into the Neo4j Batch Loader
+(which is in Java). But it's generic enough that you can add othr 
 resource modules to extened it to do whatever you want.
 
 An Example resource is provided in lightsocket/resources dir, as well as a 
-Blueprints resource.
+Blueprints Neo4j resource.
  
 Is it ready?
 
 It works for what it was designed for, but it's not meant to be used as a 
 production server (at least not yet). I will continue to develop it and 
-use it to experiment with ZeroMQ and binary protocols. 
+use it to experiment with ZeroMQ and binary serialization and RPC protocols. 
 
-It's written in Jython so it's easy to extend, and it was doing ~8,400 inserts 
-per second on a single external USB hard drive on my dev system. Jython and
-JSON were the bottlenecks. By using a binary serialization library and 
-rewriting the server in Java or Scala we could improve upon that.
+It's written in Jython so it's easy to extend, and it was doing ~10,000 requests
+per second on my dev system. Jython was the bottlenecks. By using a rewriting 
+the server in Java or Scala we could improve upon that.
 
 What do I need?
 
-If you're just using the base server, you need several to install these 
-packages (I plan on automating this real soon now):
+If you're just using the base server, you need to install these packages (I plan 
+on automating this real soon now):
 
 * ZeroMQ (http://www.zeromq.org/intro:get-the-software)
 
