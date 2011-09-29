@@ -37,6 +37,8 @@ on automating this real soon now):
   $ cd jzmq
   $ mvn clean install
 
+* Jython >=2.5.1 (http://www.jython.org/downloads.html)
+
 * Jackson JSON (http://jackson.codehaus.org/)
 
 * Google Gson (http://code.google.com/p/google-gson/)
