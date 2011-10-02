@@ -8,16 +8,14 @@ from java.lang import Long
 
 from com.tinkerpop.rexster import AbstractSubResource
 from com.tinkerpop.rexster import RexsterApplicationProvider
+from com.tinkerpop.rexster.util import ElementHelper
 from com.tinkerpop.blueprints.pgm.impls.neo4j import Neo4jGraph
 from com.tinkerpop.blueprints.pgm.impls.neo4jbatch import Neo4jBatchGraph
 #from com.tinkerpop.pipes.util import FluentPipeline
 
+
 from lightsocket.server import Resource, Response, Router
 
-# These are needed to set typed values via Rexster's property type system
-class BatchResource(AbstractSubResource): pass
-class BatchRap(RexsterApplicationProvider): pass
-batch_resource = BatchResource(BatchRap())
 
 class VertexProxy(Resource):
 
@@ -33,7 +31,7 @@ class VertexProxy(Resource):
     def create(self,request):
         vertex = self.graph.addVertex(None)
         for key, value in request.data.items():
-            value = batch_resource.getTypedPropertyValue(str(value))
+            value = ElementHelper.getTypedPropertyValue(str(value))
             vertex.setProperty(key,value)
         data = dict(_id=vertex.id,_type=self._type)
         return Response(201,data)
