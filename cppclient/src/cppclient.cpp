@@ -1,9 +1,9 @@
 //============================================================================
 // Name        : cppclient.cpp
 // Author      : Andreas Hermann
-// Version     :
+// Version     : 0.1
 // Copyright   : 
-// Description : Hello World in C++, Ansi-style
+// Description : Hello World, from C++ to Neo4J and back
 //============================================================================
 
 #include <iostream>
@@ -12,6 +12,7 @@ using namespace std;
 #include "zmqpp/zmqpp.hpp"
 #include "stdio.h"
 #include "string.h"
+#include "json/json.h"
 
 
 int main()
@@ -21,11 +22,25 @@ int main()
   auto zsock = zmq_socket(context, ZMQ_REQ);
   zmq_connect(zsock, "tcp://localhost:5555");
 
-  //auto puller = zmq_socket(context, ZMQ_REQ);
-  //zmq_bind(puller, "tcp://*:5555");
+  Json::FastWriter js_writer;
+  Json::Value js_msg(Json::objectValue);
+  Json::Value js_data(Json::objectValue);
+  Json::Value js_params(Json::objectValue);
+  Json::Value js_path(Json::objectValue);
 
-  string msg_to_send ("{\"data\": {\"city\": \"Dallas\", \"name\": \"James\"}, \"params\": \"\", \"path\": \"wordgraph/vertices/create\"}\n");
-  //string msg_to_send ("Hwllo World!");
+  js_data["city"] = "Dallas";
+  js_data["name"] = "Frank";
+
+  Json::Value js_array(Json::arrayValue);
+
+  js_msg["data"] = js_data;
+  js_msg["params"] = js_params;
+  js_msg["path"] = Json::Value("wordgraph/vertices/create");
+
+
+  string msg_to_send;
+  msg_to_send = js_writer.write(js_msg);
+
   std::cout << "Trying to send " << msg_to_send << std::endl;
   zmq_send(zsock, msg_to_send.c_str(), msg_to_send.length(), 0);
 
@@ -35,11 +50,16 @@ int main()
     zmq_recvmsg(zsock, &message, 0);
     std::string str_message(static_cast<char*> (zmq_msg_data(&message)), zmq_msg_size(&message));
 
-  //zmq_close( pusher);
   zmq_close(zsock);
-
   zmq_term( context);
 
-  cout << "Received: " << str_message << endl; // prints !!!Hello World!!!
+  Json::Reader js_reader;
+  Json::Value js_rcv;
+  if(js_reader.parse(str_message, js_rcv, false))
+  {
+    cout << "Received: " << js_rcv << endl; // prints !!!Hello World!!!
+  }else{
+    cout << "Error parsing the answer from server" << std::endl;
+  }
   return 0;
 }
