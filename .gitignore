@@ -6,6 +6,8 @@ old/
 .tox/
 .cache/
 .coverage
+*.o
+*.d
 *.egg
 *.egg-info/
 *.pyc

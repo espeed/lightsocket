@@ -9,7 +9,6 @@
 #define CPPCLIENT_H_
 
 #include <iostream>
-//#include "zmqpp/zmqpp.hpp"
 #include "zmq.hpp"
 #include "stdio.h"
 #include "string.h"
