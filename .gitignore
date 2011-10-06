@@ -11,5 +11,7 @@ old/
 *.pyc
 *.pyo
 *.class
+*.project
+*.cproject
 *~
 
