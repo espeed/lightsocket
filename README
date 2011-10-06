@@ -31,11 +31,19 @@ on automating this real soon now):
 
 * ZeroMQ (http://www.zeromq.org/intro:get-the-software)
 
-* jzmq, the Java ZeroMQ binding (install using maven):
-
+* jzmq, the Java ZeroMQ binding (As jzmq is both, Java and C++ Code, you might have to use two build tools):
   $ git clone https://github.com/zeromq/jzmq.git
   $ cd jzmq
+ * Install using maven:
   $ mvn clean install
+ * Build using make:
+  $ ./autogen.sh
+  $ ./configure.sh
+  $ ./make
+  $ sudo ./make install
+  If you don't install the C++ libs in a regular system lib path, 
+  you will have to introduce them to Java / Jython via
+  $ java -Djava.library.path=/path/to/lib -classpath /path/to/zeromq/jar/
 
 * Jython >=2.5.1 (http://www.jython.org/downloads.html)
 
