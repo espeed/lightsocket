@@ -23,16 +23,8 @@ public:
   rexterCppClient(std::string zsock_addr);
   ~rexterCppClient();
 
-
-
   // Send request and receive answer from server
   int send_request(const Json::Value &path, const Json::Value &params, const Json::Value &data, Json::Value &answer);
-
-  // Execute a bunch of requests
-  void run_test(int requests=30000);
-
-  // Example how to add node to the wordgraph DB
-  void create_node();
 
 protected:
 
@@ -41,10 +33,6 @@ private:
   // Open and close ZeroMQ socket connection
   int connect(std::string zsock_addr);
   int disconnect();
-
-  // measure test time
-  void start_timer();
-  void stop_timer();
 
   // Verbose
   void display_progress();

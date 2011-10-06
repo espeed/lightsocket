@@ -4,4 +4,4 @@
 
 USER_OBJS :=
 
-LIBS := -lzmq
+LIBS := -lzmq -ljson

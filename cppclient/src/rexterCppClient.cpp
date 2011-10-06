@@ -69,7 +69,7 @@ int rexterCppClient::send_request(const Json::Value &path, const Json::Value &pa
   std::string msg_to_send;
   msg_to_send = js_writer.write(js_msg);
 
-  std::cout << "Trying to send " << msg_to_send << std::endl;
+  //std::cout << "Trying to send " << msg_to_send << std::endl;
 
   if(zmq_send(zsock, msg_to_send.c_str(), msg_to_send.length(), 0) != 0)
   {

@@ -9,6 +9,7 @@
 
 int main(int argc, const char *argv[])
 {
+
   rexterCppClient* client = new rexterCppClient("tcp://localhost:5555");
 
   Json::Value js_data(Json::objectValue);
@@ -19,8 +20,12 @@ int main(int argc, const char *argv[])
   js_data["city"] = "Dallas";
   js_data["name"] = "Frank";
 
-  client->send_request(js_path, js_params, js_data, js_answer);
 
+  for( int i = 0; i < 1; i++)
+  {
+    js_data["counter"] = i;
+    client->send_request(js_path, js_params, js_data, js_answer);
+  }
   delete client;
 
   return 0;
