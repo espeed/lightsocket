@@ -13,7 +13,7 @@ main: $(LIBRARY_NAME).so $(TEST_DIR)main.cpp
 
 $(LIBRARY_NAME).so: $(LIB_SRC_DIR)/$(LIBRARY_NAME).cpp
 	$(CXX) $(INCLUDES) -MMD -std=c++0x -pipe -fPIC -c $(LIB_SRC_DIR)/$(LIBRARY_NAME).cpp -o $(BUILD_DIR)$(LIBRARY_NAME).o $(LIBS)
-	$(CXX) -shared  -Wl,-soname,$(BUILD_DIR)$(LIBRARY_NAME).so -o $(BUILD_DIR)$(LIBRARY_NAME).so $(BUILD_DIR)$(LIBRARY_NAME).o
+	$(CXX) -shared  -Wl,-soname=$(LIBRARY_NAME).so -o $(BUILD_DIR)$(LIBRARY_NAME).so $(BUILD_DIR)$(LIBRARY_NAME).o
 	ln $(BUILD_DIR)$(LIBRARY_NAME).so $(BUILD_DIR)lib$(LIBRARY_NAME).so
 	
 clean:
