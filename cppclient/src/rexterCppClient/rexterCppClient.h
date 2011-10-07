@@ -9,7 +9,7 @@
 #define CPPCLIENT_H_
 
 #include <iostream>
-#include "zmq.hpp"
+#include "zmq.h"
 #include "stdio.h"
 #include "string.h"
 #include "json/json.h"

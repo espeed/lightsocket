@@ -5,8 +5,8 @@ CXX          = g++
 CPPFLAGS     = 
 LIBS        := -lzmq -ljson
 BUILD_DIR    = ./build/
-INCLUDES     = -I/home/hermann-local/src/jsoncpp-src-0.5.0/include -I/home/hermann-local/src/cppzmq -I/usr/local/include -I./$(LIB_SRC_DIR)
-
+INCLUDES     = -I/usr/local/include -I./$(LIB_SRC_DIR)
+INSTALL_DIR  = /usr/local/
 
 main: $(LIBRARY_NAME).so $(TEST_DIR)main.cpp
 	$(CXX) $(INCLUDES) -o $(BUILD_DIR)main  $(TEST_DIR)main.cpp -L$(BUILD_DIR) -l$(LIBRARY_NAME) $(LIBS)
@@ -18,3 +18,7 @@ $(LIBRARY_NAME).so: $(LIB_SRC_DIR)/$(LIBRARY_NAME).cpp
 	
 clean:
 	rm $(BUILD_DIR)$(LIBRARY_NAME).o $(BUILD_DIR)$(LIBRARY_NAME).d $(BUILD_DIR)$(LIBRARY_NAME).so $(BUILD_DIR)lib$(LIBRARY_NAME).so $(BUILD_DIR)main
+	
+install:
+	sudo cp $(BUILD_DIR)$(LIBRARY_NAME).so $(BUILD_DIR)lib$(LIBRARY_NAME).so $(INSTALL_DIR)lib/
+	sudo cp $(LIB_SRC_DIR)/$(LIBRARY_NAME).h $(INSTALL_DIR)include/
