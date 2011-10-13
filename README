@@ -31,7 +31,11 @@ on automating this real soon now):
 
 * ZeroMQ (http://www.zeromq.org/intro:get-the-software)
 
-* jzmq, the Java ZeroMQ binding (As jzmq is both, Java and C++ Code, you might have to use two build tools):
+* jzmq, (for detailed install instructions, see 
+  http://lists.zeromq.org/pipermail/zeromq-dev/2011-October/013762.html). The Java 
+  ZeroMQ binding (As jzmq is both, Java and C++ Code, you might have to use two 
+  build tools):
+
   $ git clone https://github.com/zeromq/jzmq.git
   $ cd jzmq
  * Install using maven:
