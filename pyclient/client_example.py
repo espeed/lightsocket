@@ -38,7 +38,7 @@ class ClientExample(object):
         self.socket.send(message)
         raw = self.socket.recv()
         resp = json.loads(raw)        
-        return raw
+        return resp
 
     def start_timer(self):
         self.start_time = time.time()
@@ -63,6 +63,17 @@ class ClientExample(object):
             self.display_progress()
         self.stop_timer()
 
+    # Example how to add node to the wordgraph DB
+    def create_node(self):
+        path = "wordgraph/vertices/create"
+        data = dict(name="James",city="Dallas")
+        params = None
+        resp = self.send_request(path,params,data)
+        print resp
+        node_id = resp['results']['_id']
+        return node_id
+
+
 client = ClientExample()
 client.run_test()
-
+#client.create_node()

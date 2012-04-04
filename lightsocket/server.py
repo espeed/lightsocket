@@ -175,7 +175,7 @@ class Server(Resource):
             # max req/sec with one python client: 10174 req/sec
             # python client json serialization drops 10174 to 8153
             # jython server json read drops it from 8153 to 6302
-            request = Request(self.mapper.readValue(raw,HashMap))
+            request = Request(self.mapper.readValue(raw.tostring(),HashMap))
             # router drops is from 6302 to 4600 (this is the only thing to optimize)
             resp = self.router.get(request)
             # re-serialization drops it from 4600 to 4282 (you don't have to serialize)

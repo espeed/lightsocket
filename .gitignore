@@ -6,10 +6,14 @@ old/
 .tox/
 .cache/
 .coverage
+*.o
+*.d
 *.egg
 *.egg-info/
 *.pyc
 *.pyo
 *.class
+*.project
+*.cproject
 *~
 
