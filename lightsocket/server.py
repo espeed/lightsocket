@@ -162,7 +162,7 @@ class Server(Resource):
         
     def start(self):
         print "Starting Lightsocket..."
-        context = ZMQ.context(1)
+        context = ZMQ.context(4)  # number of IO threads to use
         self.socket = context.socket(ZMQ.REP)
         self.socket.bind(self.address)
         self.up = True

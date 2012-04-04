@@ -27,7 +27,7 @@ class ClientExample(object):
 
     def _connect(self):        
         print "Connecting to Lightsocket..."
-        context = zmq.Context()
+        context = zmq.Context(8)
         socket = context.socket(zmq.REQ)
         socket.connect(self.server)
         return socket

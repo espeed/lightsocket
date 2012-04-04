@@ -5,11 +5,11 @@
 #
 
 # Modify this to point to your Rexster root dir and lib dir
-REXSTER_DIR=/home/james/projects/whybase/rexster
-REXSTER_LIB="${REXSTER_DIR}/target/rexster-0.7-SNAPSHOT-standalone/lib/*"
+REXSTER_DIR=/home/james/packages/tinkerpop/rexster
+REXSTER_LIB="${REXSTER_DIR}/rexster-server/target/rexster-server-0.9-SNAPSHOT-standalone/lib/*"
 
 # Modify this to point to your Jython dir
-JYTHON_DIR=/home/james/jython2.5.2
+JYTHON_DIR=/home/james/packages/jython2.5.2
 
 #
 # You don't need to modify anyting past this point.

@@ -29,12 +29,20 @@ What do I need?
 If you're just using the base server, you need to install these packages (I plan 
 on automating this real soon now):
 
-* ZeroMQ (http://www.zeromq.org/intro:get-the-software)
+* ZeroMQ (http://www.zeromq.org/intro:get-the-software), 
+  requires uuid-devel, glibc-devel, libuuid-devel
+  add /usr/local/lib to ld.so.conf for pyzmq
+
+  See http://www.zeromq.org/docs:source-git
 
 * jzmq, the Java ZeroMQ binding (install using maven):
 
   $ git clone https://github.com/zeromq/jzmq.git
   $ cd jzmq
+  $ ./autogen.sh
+  $ ./configure.sh
+  $ ./make
+  $ sudo ./make install
   $ mvn clean install
 
 * Jackson JSON (http://jackson.codehaus.org/)
@@ -81,7 +89,7 @@ $ python client_example.py
 
 You should see something like this:
 
-Connecting to lightsocket...
+Connecting to Lightsocket...
 1000 0.266904830933 0.000266904830933 3746.65380355
 2000 0.543519020081 0.00027175951004 3679.72403193
 3000 0.819408893585 0.000273136297862 3661.17578597

@@ -10,7 +10,7 @@ from lightsocket.resources.blueprints import Neo4jGraph, Neo4jBatchGraph
 example = Example()
 
 # WordGraph Resource
-wordgraph = Neo4jGraph("/external/wordgraph")
+wordgraph = Neo4jGraph("/home/james/data/wordgraph")
 wordgraph.graph.setMaxBufferSize(1000)
 
 # Initialize the server, add your resources, and start the server
